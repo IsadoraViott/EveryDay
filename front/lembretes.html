@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hábitos Diários</title>
+  <link rel="stylesheet" href="./css/check_lembrete.css">
+</head>
+<body>
+  <header class="top-bar">
+      <img src="./assents/logo-removebg-preview.png" alt="logo" class="logo">
+      <h1>Every Day</h1>
+   </header>
+ 
+  <nav class="menu">
+            <a href="lembretes.html" class="menu-btn">Lembretes</a>
+            <a href="checklist.html" class="menu-btn">Checklist</a>
+            <a href="habitos.html" class="menu-btn">Hábitos</a>
+          </nav>
+          
+  <main>
+    <section class="card">
+      <h2>Lembretes</h2>
+      <div id="lembretes">
+        
+      </div> 
+      <div class="actions">
+        <button onclick="adicionarL()">Adicionar</button>
+      </div>
+    </section>
+    <section class="form-box" id="form_lembretes">
+        <h2>Adicionar lembrete</h2>
+        <form id="addLembrete">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo">
+
+            <label for="dia">Dia</label>
+            <input type="date" id="dia" name="dia">
+
+            <button type="submit" onclick="adicionarLembrete()">Adicionar</button>
+        </form>
+    </section>
+  </main>
+  <script src="./js/lembretes/lembretes.js"></script>
+  <script src="./js/lembretes/addLembretes.js"></script>
+</body>
+</html>
+ 
+ 

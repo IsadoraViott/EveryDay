@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Every Day - Cadastro</title>
+  <link rel="stylesheet" href="./css/check_lembrete.css">
+</head>
+ 
+ 
+<header class="top-bar">
+  <img src=".png" alt="logo" class="logo">
+  <h1>Every Day</h1>
+</header>
+ 
+<nav class="menu">
+            <a href="lembretes.html" class="menu-btn">Lembretes</a>
+            <a href="checklist.html" class="menu-btn">Checklist</a>
+            <a href="habitos.html" class="menu-btn">Hábitos</a>
+          </nav>
+ 
+          <section  class="card">
+            <h2>Checklist</h2>
+            <div id="conteudos">
+
+            </div>
+            <div class="actions">
+              <button type="submit" onclick="adicionarC()">Adicionar</button>
+            </div>
+          </section>
+
+          <section class="form-box" id="form_checklist">
+            <h2>Adicionar Checklist</h2>
+            <form id="addChecklist">
+                <label for="conteudo">Conteúdo</label>
+                <input type="text" id="conteudo" name="conteudo">
+    
+                <button type="submit" onclick="adicionarChecklist()">Adicionar</button>
+            </form>
+        </section>
+ 
+</body>
+
+<script src="./js/checklist/addChecklist.js"></script>
+<script src="./js/checklist/checklist.js"></script>
+</html>
+ 

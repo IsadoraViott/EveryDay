@@ -1,0 +1,4 @@
+Ao baixar o arquivo, execute no terminal - "npm init -y" e "npm i nodemon cors mysql2 dotenv express".
+Cole o banco no mysql2.
+Após a instalação das dependências, execute - "npm start".
+
