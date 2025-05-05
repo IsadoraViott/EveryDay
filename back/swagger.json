@@ -1,0 +1,372 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API do EveryDay",
+        "version": "1.0.0",
+        "description": "Documentação da API para cadastro de usuários, login, cadastro e a manuntenção dos hábitos, lembretes e checklist."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3002",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/cadastro": {
+            "post": {
+                "summary": "Cadastro de usuário",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "senha": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "nome",
+                                    "email",
+                                    "senha"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pessoa cadastrada com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao cadastrar pessoa"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Login de usuário",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "senha": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "senha"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login realizado"
+                    },
+                    "500": {
+                        "description": "Email ou senha incorretos"
+                    }
+                }
+            }
+        },
+        "/adicionarHabito": {
+            "post": {
+                "summary": "Cadastro de hábitos",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "habito": {
+                                        "type": "string"
+                                    },
+                                    "periodo": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "habito",
+                                    "periodo"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Hábito adicionado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao adicionar hábito"
+                    }
+                }
+            }
+        },
+        "/habitos": {
+            "get": {
+                "summary": "Lista de todos os hábitos",
+                "responses": {
+                    "200": {
+                        "description": "Lista de hábitos"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar hábitos"
+                    }
+                }
+            }
+        },
+        "/habitos/manha": {
+            "get": {
+                "summary": "Lista dos hábitos da manhã",
+                "responses": {
+                    "200": {
+                        "description": "Lista de hábitos matinais"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar hábitos"
+                    }
+                }
+            }
+        },
+        "/habitos/tarde": {
+            "get": {
+                "summary": "Lista dos hábitos da tarde",
+                "responses": {
+                    "200": {
+                        "description": "Lista de hábitos vespertinos"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar hábitos"
+                    }
+                }
+            }
+        },
+        "/habitos/noite": {
+            "get": {
+                "summary": "Lista dos hábitos da noite",
+                "responses": {
+                    "200": {
+                        "description": "Lista de hábitos noturnos"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar hábitos"
+                    }
+                }
+            }
+        },
+        "/habitos/{id}": {
+            "delete": {
+                "summary": "Hábitos deletados",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": { "type": "integer" }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Hábito deletado"
+                    },
+                    "500": {
+                        "description": "Erro ao deletar hábito"
+                    }
+                }
+            }
+        },
+        "/adicionarChecklist": {
+            "post": {
+                "summary": "Adiciona um item ao checklist",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "conteudo": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "conteudo"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Checklist adicionado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao adicionar checklist"
+                    }
+                }
+            }
+        },
+        "/checklist": {
+            "get": {
+                "summary": "Busca checklist",
+                "responses": {
+                    "500": {
+                        "description": "Erro ao buscar checklist"
+                    }
+                }
+            }
+        },
+        "/checklist/{id}": {
+            "delete": {
+                "summary": "Remove item do checklist",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Erro ao completar checklist"
+                    }
+                }
+            }
+        },
+        "/adicionarLembrete": {
+            "post": {
+                "summary": "Adiciona um lembrete",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "dia": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "required": [
+                                    "titulo",
+                                    "dia"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Lembrete adicionado com sucesso"
+                    },
+                    "500": {
+                        "descripition": "Erro ao adicionar lembrete"
+                    }
+                }
+            }
+        },
+        "/lembretes": {
+            "get": {
+                "summary": "Busca todos os lembretes",
+                "responses": {
+                    "500": {
+                        "description": "Erro ao buscar lembretes"
+                    }
+                }
+            }
+        },
+        "/lembretes/{id}": {
+            "put": {
+                "summary": "Atualiza um lembrete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "dia": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "required": [
+                                    "titulo",
+                                    "dia"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Lembrete atualizado"
+                    },
+                    "500": {
+                        "description": "Erro ao atualizar lembrete"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta um lembrete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lembrete deletado"
+                    },
+                    "500": {
+                        "description": "Erro ao deletar lembrete"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,6 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 const cors = require("cors");
 const port = 3002;
 const app = express();
@@ -6,6 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
+    console.log(`Documentação disponível em http://localhost:${port}/api-docs`)
+})
 app.listen(port, ()=> console.log ("Rodando na porta " + port));
 
 const connection = require('./db/connection.js');
